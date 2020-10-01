@@ -7,7 +7,7 @@
     <groupId>fr.eilco</groupId>
     <artifactId>jeeEilco</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jeeEilcoFr</name>
+    <name>JeeEilco</name>
     <packaging>war</packaging>
 
     <properties>
@@ -17,6 +17,13 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/taglibs/standard -->
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

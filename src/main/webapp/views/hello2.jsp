@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:useBean id="User" scope="request" class="fr.eilco.model.User" />
 <html>
 <head>
@@ -15,5 +16,10 @@
     <h1>Hello JSP File</h1>
     Login: <jsp:getProperty name="User" property="login" />
     Email: <jsp:getProperty name="User" property="email" />
+
+    <br>
+    <c:forEach var = "i" begin = "1" end = "5">
+        Item <c:out value = "${i}"/> <br>
+    </c:forEach>
 </body>
 </html>
