@@ -1,4 +1,6 @@
-package fr.eilco;
+package fr.eilco.servlets;
+
+import fr.eilco.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,15 +18,24 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Initialize httpSession
-        HttpSession httpSession = request.getSession(true);
+        //HttpSession httpSession = request.getSession(true);
+
         // Get params from request
         String login = request.getParameter("login").trim();
         String email = request.getParameter("email").trim();
+
         // Send response with url params
-        response.sendRedirect("hello.jsp?login=" + login + "&?email=" + email);
+        // response.sendRedirect("views/hello.jsp?login=" + login + "&?email=" + email);
         // OR
-        // request.getRequestDispatcher("hello.jsp").forward(request, response);
+        // request.getRequestDispatcher("views/hello.jsp").forward(request, response);
         // OR by using session
-        httpSession.setAttribute("email", email);
+        //httpSession.setAttribute("email", email);
+
+        // Using JavaBeans, dispatch to another view
+        User user = new User();
+        user.setLogin(login);
+        user.setEmail(email);
+        request.setAttribute("User", user);
+        request.getRequestDispatcher("views/hello2.jsp").forward(request, response);
     }
 }
