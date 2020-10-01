@@ -13,6 +13,6 @@
 <body>
     <h1>Hello JSP File</h1>
     Bonjour <%= request.getParameter("login") %>
-    Bonjour <%= request.getAttribute("login") %>
+    Bonjour <%= session.getAttribute("email") %>
 </body>
 </html>
