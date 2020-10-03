@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Hashtable;
 
-@WebServlet(name = "UserEJBServlet")
+@WebServlet(name = "UserEJBServlet", urlPatterns = "/controller")
 public class UserEJBServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -22,29 +22,31 @@ public class UserEJBServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String name = request.getParameter("nom");
         String message = "";
 
-        //Connexion JNDI (annuaire pour localiser l'EJB)
+        // Connexion JNDI (annuaire pour localiser l'EJB)
         try {
             final Hashtable jndiProperties = new Hashtable();
             jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+
             final Context context = new InitialContext(jndiProperties);
-            final String appName = "HelloEAR";
-            final String moduleName = "HelloEJBProject";
-
-            final String beanName = "HelloEJB";
+            final String appName = "";
+            final String moduleName = "jeeEilco-1.0-SNAPSHOT";
+            final String distinctName = "UserJNDI";
             final String viewClassName = UserEJBRemote.class.getName();
+            final String ejbRemoteJNDIName = "ejb:" + appName + "/" + moduleName + "/" +
+                    distinctName + "!" + viewClassName;
 
-            UserEJBRemote remote = (UserEJBRemote) context.lookup("ejb:" + appName + "/" + moduleName + "/" +
-                            beanName + "!" + viewClassName);
-            message = remote.direBonjour(name);
+            UserEJBRemote remote = (UserEJBRemote) context.lookup(ejbRemoteJNDIName);
+            message = remote.direBonjour("FROM EILCO");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        User bean = new User();
-        bean.setLogin(message);
-        session.setAttribute("beanHello", bean);
-        response.sendRedirect("HelloEJB.jsp");
+
+        User user = new User();
+        user.setLogin(message);
+        user.setEmail("test@email.fr");
+        request.setAttribute("User", user);
+        request.getRequestDispatcher("views/hello2.jsp").forward(request, response);
     }
 }
