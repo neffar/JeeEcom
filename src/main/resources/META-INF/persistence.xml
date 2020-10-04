@@ -3,7 +3,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
-    <persistence-unit name="default">
-
+    <persistence-unit name="userManager" transaction-type="JTA">
+        <jta-data-source>java:/UserDS</jta-data-source>
+        <class>fr.eilco.model.User</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--             <property name="hibernate.hbm2ddl.auto" value="create" />-->
+<!--             <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+            <property value="true" name="hibernate.show_sql"/>
+        </properties>
     </persistence-unit>
 </persistence>

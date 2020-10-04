@@ -1,17 +1,37 @@
 package fr.eilco.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * EJB Entity
+ */
+@Entity
+@Table(name = "users")
 public class User implements Serializable {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "login")
     private String login;
+    @Column(name = "email")
     private String email;
 
-    public void setId(String id) {
+    public User() {
+    }
+
+    public User(Long id, String login, String email) {
+        this.id = id;
+        this.login = login;
+        this.email = email;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
