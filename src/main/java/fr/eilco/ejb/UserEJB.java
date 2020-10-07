@@ -28,7 +28,7 @@ public class UserEJB implements UserEJBRemote, UserEJBLocal {
         return (User) q.getSingleResult();
     }
 
-    public String direBonjourEntity2(String name) {
+    public String direBonjourEntity2() {
         Query q = entityManager.createQuery("select u.login from User u where u.id =: id")
                 .setParameter("id", 1);
         return (String) q.getSingleResult();

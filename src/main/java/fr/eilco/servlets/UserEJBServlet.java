@@ -22,10 +22,11 @@ public class UserEJBServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String message = userUJB.direBonjour("from EILCO EJB");
-        User user = new User();
-        user.setLogin(message);
-        user.setEmail("test@email.fr");
+//        String message = userUJB.direBonjour("from EILCO EJB");
+//        User user = new User();
+//        user.setLogin(message);
+//        user.setEmail("test@email.fr");
+        User user = userUJB.direBonjourEntity();
         request.setAttribute("User", user);
         request.getRequestDispatcher("views/hello2.jsp").forward(request, response);
     }
