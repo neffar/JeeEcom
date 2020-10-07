@@ -19,22 +19,18 @@ public class UserEJB implements UserEJBRemote, UserEJBLocal {
     @PersistenceContext(unitName = "userManager")
     EntityManager entityManager;
 
-    public UserEJB() {
-
-    }
-
     public String direBonjour(String name) {
         return "Bonjour " + name;
     }
 
-//    public User direBonjourEntity() {
-//        Query q = entityManager.createQuery("select u from User u");
-//        return (User) q.getSingleResult();
-//    }
-//
-//    public String direBonjourEntity2(String name) {
-//        Query q = entityManager.createQuery("select u.login from User u where u.id =: id")
-//                .setParameter("id", 1);
-//        return (String) q.getSingleResult();
-//    }
+    public User direBonjourEntity() {
+        Query q = entityManager.createQuery("select u from User u");
+        return (User) q.getSingleResult();
+    }
+
+    public String direBonjourEntity2(String name) {
+        Query q = entityManager.createQuery("select u.login from User u where u.id =: id")
+                .setParameter("id", 1);
+        return (String) q.getSingleResult();
+    }
 }
