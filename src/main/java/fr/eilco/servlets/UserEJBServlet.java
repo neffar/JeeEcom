@@ -18,15 +18,16 @@ public class UserEJBServlet extends HttpServlet {
     UserEJBLocal userUJB;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        // Get params from request
+        String login = request.getParameter("login").trim();
+        String email = request.getParameter("email").trim();
+
+        userUJB.save(new User(login, email));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String message = userUJB.direBonjour("from EILCO EJB");
-//        User user = new User();
-//        user.setLogin(message);
-//        user.setEmail("test@email.fr");
-        User user = userUJB.direBonjourEntity();
+//        User user = userUJB.findAll();
+        User user = userUJB.findById((long) 1);
         request.setAttribute("User", user);
         request.getRequestDispatcher("views/hello2.jsp").forward(request, response);
     }

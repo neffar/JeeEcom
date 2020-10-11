@@ -11,7 +11,7 @@
     <title>Hello JSP File</title>
 </head>
 <body>
-    <h1>Hello JSP File</h1>
+    <h1>Hello 1</h1>
     Bonjour <%= request.getParameter("login") %>
     Bonjour <%= session.getAttribute("email") %>
 </body>

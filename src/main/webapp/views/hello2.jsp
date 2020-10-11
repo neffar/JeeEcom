@@ -12,7 +12,7 @@
 
 <t:genericpage title="Hello JSP File">
     <jsp:attribute name="header">
-      <h1>Welcome</h1>
+      <h1>Hello 2</h1>
     </jsp:attribute>
     <jsp:attribute name="body">
 
