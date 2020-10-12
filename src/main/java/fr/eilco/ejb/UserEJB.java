@@ -40,8 +40,6 @@ public class UserEJB implements UserEJBRemote, UserEJBLocal {
     }
 
     public void save(User user) {
-        entityManager.getTransaction().begin();
         entityManager.persist(user);
-        entityManager.getTransaction().commit();
     }
 }

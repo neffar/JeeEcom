@@ -21,7 +21,6 @@ public class UserEJBServlet extends HttpServlet {
         // Get params from request
         String login = request.getParameter("login").trim();
         String email = request.getParameter("email").trim();
-
         userUJB.save(new User(login, email));
     }
 
