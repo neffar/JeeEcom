@@ -3,7 +3,7 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
-    <persistence-unit name="default" transaction-type="JTA">
+    <persistence-unit name="managerBoutique" transaction-type="JTA">
         <jta-data-source>java:/JeeEilcoDS</jta-data-source>
         <class>fr.eilco.model.Categorie</class>
         <class>fr.eilco.model.Client</class>
