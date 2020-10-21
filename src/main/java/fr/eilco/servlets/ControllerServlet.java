@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ControllerServlet", urlPatterns = "/test")
+@WebServlet(name = "ControllerServlet")
 public class ControllerServlet extends HttpServlet {
     @EJB
     AccesCatalogueBeanLocal accessCatalogue;
@@ -19,5 +19,6 @@ public class ControllerServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher( "/view/index.jsp" ).forward( request, response );
     }
 }
