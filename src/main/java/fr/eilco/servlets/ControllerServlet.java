@@ -13,13 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "ControllerServlet", urlPatterns = "/test")
 public class ControllerServlet extends HttpServlet {
     @EJB
-    AccesCatalogueBeanLocal metier;
+    AccesCatalogueBeanLocal accessCatalogue;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

@@ -15,11 +15,13 @@ public class AccessCatalogueBean implements AccesCatalogueBeanLocal, AccesCatalo
 
     @Override
     public List<Categorie> getListCategories() {
-        return null;
+        List<Categorie> categories = entityManager.createQuery("select c from Categorie c", Categorie.class).getResultList();
+        return categories;
     }
 
     @Override
     public List<Produit> getListProduits(int id) {
-        return null;
+        List<Produit> produits = entityManager.createQuery("select p from Produit p", Produit.class).getResultList();
+        return produits;
     }
 }

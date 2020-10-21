@@ -12,8 +12,8 @@
         <class>fr.eilco.model.ProduitCommande</class>
         <properties>
             <property value="org.hibernate.dialect.MySQL8Dialect" name="hibernate.dialect"/>
-            <property value="update" name="hibernate.hbm2ddl.auto"/>
-            <property value="true" name="hibernate.show_sql"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
