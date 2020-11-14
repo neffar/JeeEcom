@@ -10,18 +10,21 @@ import java.util.List;
 
 @Stateless
 public class AccessCatalogueBean implements AccesCatalogueBeanLocal, AccesCatalogueBeanRemote {
-    @PersistenceContext(unitName="managerBoutique")
+    @PersistenceContext(unitName = "managerBoutique")
     EntityManager entityManager;
 
     @Override
+    public Categorie findCategorieById(int id) {
+        return entityManager.find(Categorie.class, id);
+    }
+
+    @Override
     public List<Categorie> getListCategories() {
-        List<Categorie> categories = entityManager.createQuery("select c from Categorie c", Categorie.class).getResultList();
-        return categories;
+        return entityManager.createQuery("select c from Categorie c", Categorie.class).getResultList();
     }
 
     @Override
     public List<Produit> getListProduits(int id) {
-        List<Produit> produits = entityManager.createQuery("select p from Produit p", Produit.class).getResultList();
-        return produits;
+        return entityManager.createQuery("select p from Produit p", Produit.class).getResultList();
     }
 }

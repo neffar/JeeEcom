@@ -15,7 +15,4 @@
         </div>
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-      <p id="copyright">Copyright 2020, EILCO</p>
-    </jsp:attribute>
 </t:template>

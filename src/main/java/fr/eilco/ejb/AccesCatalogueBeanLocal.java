@@ -8,6 +8,7 @@ import java.util.List;
 
 @Local
 public interface AccesCatalogueBeanLocal {
+    public Categorie findCategorieById(int id);
     public List<Categorie> getListCategories();
     public List<Produit> getListProduits(int id);
 }
